@@ -14,6 +14,7 @@ function App() {
   {name: 'task4', done: false},
   {name: 'task5', done: true},
   ])
+  const [inputValue, setInputeValue] = useState('');
   return (
     <div className="App">
       <ul> 
@@ -27,12 +28,17 @@ function App() {
                  listItems.map((innerItem,innerIndex)=>innerIndex!==index? innerItem : {name: innerItem.name, done: !innerItem.done}),
                  )
              }}/>
-             {item.name} {item.done? '    Done': '    Undone'}
+              {`${index+1} - `} {item.name} {item.done? '    Done': '    Undone'}
            </li>
            )
          })
        }
       </ul>
+      <input value={inputValue} onChange={(event)=>setInputeValue(event.target.value)}/>
+      <button onClick={()=>{
+        setListItems([...listItems,{name: inputValue, done: false}])
+        setInputeValue('');
+      } }> Add Task</button>
     </div>
   );
 }
