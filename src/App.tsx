@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 
@@ -17,7 +16,7 @@ function App() {
   const [inputValue, setInputeValue] = useState('');
   return (
     <div className="App">
-      <ul> 
+      <ul > 
        {
          listItems.map((item,index)=>{
            return(
@@ -29,6 +28,7 @@ function App() {
                  )
              }}/>
               {`${index+1} - `} {item.name} {item.done? '    Done': '    Undone'}
+              <button onClick={()=>setListItems(listItems.filter((x)=>item.name!==x.name))}> remove </button>
            </li>
            )
          })
